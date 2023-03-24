@@ -8,7 +8,6 @@
             "#Constants/*": ["./src/constants/*"],
             "#Controllers/*": ["./src/controllers/*"],
             "#Dto/*": ["./src/dto/*"],
-            "#Lib/*": ["./src/lib/*"],
             "#Routes/*": ["./src/routes/*"],
             "#Schemas/*": ["./src/schemas/*"]
         }
