@@ -5,6 +5,7 @@ import userUpdateEmailDTO from '#Dto/user-update-email.dto.js';
 import userUpdatePasswordDTO from '#Dto/user-update-password.dto.js';
 import { Router } from 'express'
 import userDeleteDTO from '#Dto/user-delete.dto.js';
+import userJWTDTO from '#Dto/user-jwt-dto.js';
 
 const userRouter = Router(); 
 
@@ -14,14 +15,14 @@ userRouter.post("/register", userRegisterDTO, (req, res) => {
 
 userRouter.post("/login", userLoginDTO);
 
-userRouter.get("/profile", );
+userRouter.get("/profile", userJWTDTO);
 
-userRouter.patch("/update-info", userUpdateInfoDTO);
+userRouter.patch("/update-info", userJWTDTO, userUpdateInfoDTO);
 
-userRouter.patch("/update-email", userUpdateEmailDTO)
+userRouter.patch("/update-email", userJWTDTO, userUpdateEmailDTO)
 
-userRouter.patch("/update-password", userUpdatePasswordDTO);
+userRouter.patch("/update-password", userJWTDTO, userUpdatePasswordDTO);
 
-userRouter.delete("/remove-user", userDeleteDTO);
+userRouter.delete("/remove-user", userJWTDTO, userDeleteDTO);
 
 export default userRouter;
