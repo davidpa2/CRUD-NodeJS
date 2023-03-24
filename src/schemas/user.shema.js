@@ -1,6 +1,7 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
+const { Schema, model } = mongoose;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     _id: { type: String, _id: false },
     name: { type: String, require: true, minLength: 2, maxLength: 20 },
     surname: { type: String, require: true, minLength: 4, maxLength: 50 },
@@ -8,6 +9,6 @@ const userSchema = new Schema({
     password: { type: String, require: true }
 });
 
-const userModel = model("user", userSchema);
+const UserModel = model("users", UserSchema);
 
-export default userModel;
+export default UserModel;
