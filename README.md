@@ -1,5 +1,7 @@
 # Gestión de usuarios
 
+Esta API ha sido desarrollada a partir de la práctica del vídeo de <a href="https://www.youtube.com/watch?v=Vl2VYOzg114&t=622s&ab_channel=Desarrollo%C3%9Atil">Desarrollo útil</a>.
+
 ## Resumen
 
 Desarrollar una aplicación para la gestión de usuarios de una aplicación web.
