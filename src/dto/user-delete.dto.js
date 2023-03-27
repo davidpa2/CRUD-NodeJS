@@ -1,7 +1,7 @@
 import { Type } from '@sinclair/typebox';
 import Ajv from 'ajv';
 import addErrors from 'ajv-errors';
-import { passwordDTOSchema } from '#Lib/dto-types.js';
+import { passwordDTOSchema } from '#Dto/dto-types.js';
 
 const DeleteUserDTOSchema = Type.Object({
     password: passwordDTOSchema,
