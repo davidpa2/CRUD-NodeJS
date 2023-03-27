@@ -11,6 +11,8 @@ import userUpdateEmailDTO from '#Dto/user-update-email.dto.js';
 import userUpdateEmailController from '#Controllers/user-update-email.controller.js';
 import userUpdatePasswordDTO from '#Dto/user-update-password.dto.js';
 import userUpdatePasswordController from '#Controllers/user-update-password.controller.js';
+import userDeleteDTO from '#Dto/user-delete.dto.js';
+import userDeleteController from '#Controllers/user-delete.controller.js';
 
 const userRouter = Router();
 
@@ -26,6 +28,6 @@ userRouter.patch("/update-email", userJWTDTO, userUpdateEmailDTO, userUpdateEmai
 
 userRouter.patch("/update-password", userJWTDTO, userUpdatePasswordDTO, userUpdatePasswordController);
 
-// userRouter.delete("/remove-user", userJWTDTO, userDeleteDTO, userDeleteController);
+userRouter.delete("/remove-user", userJWTDTO, userDeleteDTO, userDeleteController);
 
 export default userRouter;
