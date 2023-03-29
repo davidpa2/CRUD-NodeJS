@@ -1,12 +1,12 @@
 import swaggerJSDoc from "swagger-jsdoc";
-import  swaggerUi from "swagger-ui-express";
+import swaggerUi from "swagger-ui-express";
 
 const options = {
     definition: {
         openapi: "3.0.0",
         info: { title: "CrudNodeJS", version: "1.0.0" }
     },
-    apis: ["#Routes/user.routes.js", "#Schemas/user.schema.js"],
+    apis: ["./src/routes/user.routes.js", "./src/schemas/user.schema.js"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
@@ -19,7 +19,7 @@ const swaggerDocs = (app, port) => {
         res.send(swaggerSpec)
     });
 
-    console.log(`Version 1 docs are available at http://localhost:${process.env.PORT}/api/docs`)
+    console.log(`Version 1 Docs are available at http://localhost:${port}/api/docs`)
 }
 
 export default swaggerDocs;

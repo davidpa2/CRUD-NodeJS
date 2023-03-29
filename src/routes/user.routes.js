@@ -16,6 +16,57 @@ import userDeleteController from '#Controllers/user-delete.controller.js';
 
 const userRouter = Router();
 
+/**
+ * @openapi
+ * /user/register:
+ *   post:
+ *     summary: Register an user
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/RegisterSchema"
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ * components:
+ *   schemas:
+ *     RegisterSchema:
+ *       type: object
+ *       properties:
+ *         _id: 
+ *           type: string
+ *           example: uuid v4
+ *         name: 
+ *           type: string
+ *           example: David 
+ *         surname:
+ *           type: string
+ *           example: Padilla
+ *         email:
+ *           type: string
+ *           example: david@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ *       required:
+ *         - _id
+ *         - name
+ *         - surname
+ *         - email
+ *         - password
+ */
 userRouter.post("/register", userRegisterDTO, userRegisterController);
 
 userRouter.post("/login", userLoginDTO, userLoginController);
