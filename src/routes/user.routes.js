@@ -326,6 +326,49 @@ userRouter.patch("/update-email", userJWTDTO, userUpdateEmailDTO, userUpdateEmai
  */
 userRouter.patch("/update-password", userJWTDTO, userUpdatePasswordDTO, userUpdatePasswordController);
 
+/**
+ * @openapi
+ * /user/remove-user:
+ *   delete:
+ *     security:
+ *       - ApiKey: []
+ *     summary: Remove user account
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/DeleteUserSchema"
+ *     responses:
+ *       200:
+ *         description: Removed user
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
+ * components:
+ *   schemas:
+ *     DeleteUserSchema:
+ *       type: object
+ *       properties:
+ *         password:
+ *           type: string
+ *           example: 1234
+ *       required:
+ *         - password
+ */
 userRouter.delete("/remove-user", userJWTDTO, userDeleteDTO, userDeleteController);
 
 export default userRouter;
