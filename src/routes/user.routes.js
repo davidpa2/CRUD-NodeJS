@@ -179,6 +179,53 @@ userRouter.post("/login", userLoginDTO, userLoginController);
  */
 userRouter.get("/profile", userJWTDTO, userProfileController);
 
+/**
+ * @openapi
+ * /user/update-info:
+ *   patch:
+ *     security:
+ *       - ApiKey: []
+ *     summary: Update name and surname form an user
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UpdateInfoSchema"
+ *     responses:
+ *       200:
+ *         description: Updated user info!
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
+ * components:
+ *   schemas:
+ *     UpdateInfoSchema:
+ *       type: object
+ *       properties:
+ *         name: 
+ *           type: string
+ *           example: David 
+ *         surname:
+ *           type: string
+ *           example: Padilla
+ *       required:
+ *         - name
+ *         - surname
+ */
 userRouter.patch("/update-info", userJWTDTO, userUpdateInfoDTO, userUpdateInfoController);
 
 userRouter.patch("/update-email", userJWTDTO, userUpdateEmailDTO, userUpdateEmailController)
