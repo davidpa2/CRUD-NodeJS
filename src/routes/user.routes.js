@@ -31,7 +31,7 @@ const userRouter = Router();
  *             $ref: "#/components/schemas/RegisterSchema"
  *     responses:
  *       200:
- *         description: OK
+ *         description: New user registered!
  *         content:
  *           application/json:
  *             schema:
@@ -40,6 +40,12 @@ const userRouter = Router();
  *                 status:
  *                   type: string
  *                   example: OK
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
  * components:
  *   schemas:
  *     RegisterSchema:
@@ -66,6 +72,15 @@ const userRouter = Router();
  *         - surname
  *         - email
  *         - password
+ *  
+ *     ErrorsSchema:
+ *       type: object
+ *       properties:
+ *         errors: 
+ *           type: array
+ *           items: 
+ *             type: string
+ *             example: Must have required property 'name'
  */
 userRouter.post("/register", userRegisterDTO, userRegisterController);
 
