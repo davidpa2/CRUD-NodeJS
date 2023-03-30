@@ -84,6 +84,51 @@ const userRouter = Router();
  */
 userRouter.post("/register", userRegisterDTO, userRegisterController);
 
+/**
+ * @openapi
+ * /user/login:
+ *   post:
+ *     summary: Login to account
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/LoginSchema"
+ *     responses:
+ *       200:
+ *         description: Succesfully logged in!
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 jwt:
+ *                   type: string
+ *                   example: string
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
+ * components:
+ *   schemas:
+ *     LoginSchema:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: david@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ *       required:
+ *         - email
+ *         - password
+ */
 userRouter.post("/login", userLoginDTO, userLoginController);
 
 userRouter.get("/profile", userJWTDTO, userProfileController);
