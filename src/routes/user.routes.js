@@ -185,7 +185,7 @@ userRouter.get("/profile", userJWTDTO, userProfileController);
  *   patch:
  *     security:
  *       - ApiKey: []
- *     summary: Update name and surname form an user
+ *     summary: Update name and surname from an user
  *     tags:
  *       - Users
  *     requestBody:
@@ -228,8 +228,102 @@ userRouter.get("/profile", userJWTDTO, userProfileController);
  */
 userRouter.patch("/update-info", userJWTDTO, userUpdateInfoDTO, userUpdateInfoController);
 
+/**
+ * @openapi
+ * /user/update-email:
+ *   patch:
+ *     security:
+ *       - ApiKey: []
+ *     summary: Update email from an user
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UpdateEmailSchema"
+ *     responses:
+ *       200:
+ *         description: Updated user email
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
+ * components:
+ *   schemas:
+ *     UpdateEmailSchema:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: david@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ *       required:
+ *         - email
+ *         - password
+ */
 userRouter.patch("/update-email", userJWTDTO, userUpdateEmailDTO, userUpdateEmailController)
 
+/**
+ * @openapi
+ * /user/update-password:
+ *   patch:
+ *     security:
+ *       - ApiKey: []
+ *     summary: Update password from an user
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UpdatePasswordSchema"
+ *     responses:
+ *       200:
+ *         description: Updated user password
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
+ * components:
+ *   schemas:
+ *     UpdatePasswordSchema:
+ *       type: object
+ *       properties:
+ *         oldPassword:
+ *           type: string
+ *           example: 1234
+ *         newPassword:
+ *           type: string
+ *           example: 12345
+ *       required:
+ *         - oldPassword
+ *         - newPassword
+ */
 userRouter.patch("/update-password", userJWTDTO, userUpdatePasswordDTO, userUpdatePasswordController);
 
 userRouter.delete("/remove-user", userJWTDTO, userDeleteDTO, userDeleteController);
