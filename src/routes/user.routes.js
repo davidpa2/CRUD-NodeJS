@@ -103,11 +103,7 @@ userRouter.post("/register", userRegisterDTO, userRegisterController);
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 jwt:
- *                   type: string
- *                   example: string
+ *               $ref: "#/components/schemas/ErrorsSchema"
  *       5XX:
  *         description: Error
  *         content:
@@ -131,6 +127,56 @@ userRouter.post("/register", userRegisterDTO, userRegisterController);
  */
 userRouter.post("/login", userLoginDTO, userLoginController);
 
+/**
+ * @openapi
+ * /user/profile:
+ *   get:
+ *     security:
+ *       - ApiKey: []
+ *     summary: Get user info
+ *     tags:
+ *       - Users
+ *     responses:
+ *       200:
+ *         description: Succesfully logged in!
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ProfileSchema"
+ *       5XX:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ErrorsSchema"
+ * components:
+ *   securitySchemes:
+ *     ApiKey:
+ *       type: apiKey
+ *       name: Authorization
+ *       in: header
+ *   schemas:
+ *     ProfileSchema:
+ *       type: object
+ *       properties:
+ *         _id: 
+ *           type: string
+ *           example: uuid v4
+ *         name: 
+ *           type: string
+ *           example: David 
+ *         surname:
+ *           type: string
+ *           example: Padilla
+ *         email:
+ *           type: string
+ *           example: david@gmail.com
+ *       required:
+ *         - _id
+ *         - name
+ *         - surname
+ *         - email
+ */
 userRouter.get("/profile", userJWTDTO, userProfileController);
 
 userRouter.patch("/update-info", userJWTDTO, userUpdateInfoDTO, userUpdateInfoController);
