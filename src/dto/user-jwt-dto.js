@@ -2,9 +2,9 @@ import { jwtVerify } from 'jose';
 
 const userJWTDTO = async (req, res, next) => {
     const { authorization } = req.headers;
-    if (!authorization) return res.status(401).send({ errors: ['Usuario no autorizado 1'] });
+    if (!authorization) return res.status(401).send({ errors: ['Usuario no autorizado'] });
 
-    const jwt = authorization.split(' ')[1]
+    const jwt = authorization.startsWith('Bearer') ? authorization.split(' ')[1] : authorization;
     if (!jwt) return res.status(402).send({ errors: ['Usuario no autorizado'] });
 
     try {
